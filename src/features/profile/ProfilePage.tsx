@@ -1,6 +1,6 @@
 import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
 import {PostUser} from './components/postUser/PostUser'
-import {Projects} from './components/Projects'
+import {InfoProfileUser} from './components/info/InfoProfileUser'
 import {Campaigns} from './components/Campaigns'
 import {Documents} from './components/Documents'
 import {Connections} from './components/Connections'
@@ -45,8 +45,8 @@ const ProfilePage = () => (
         path='projects'
         element={
           <>
-            <PageTitle breadcrumbs={profileBreadCrumbs}>Projects</PageTitle>
-            <Projects />
+            <PageTitle breadcrumbs={profileBreadCrumbs}>Info</PageTitle>
+            <InfoProfileUser />
           </>
         }
       />
