@@ -2,8 +2,8 @@ import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
 import {PostUser} from './components/postUser/PostUser'
 import {InfoProfileUser} from './components/info/InfoProfileUser'
 import {FriendPage} from './components/friend/FriendPage'
-import {Documents} from './components/Documents'
-import {Connections} from './components/Connections'
+import {PhotoPage} from './components/photos/PhotoPage'
+import {VideoPage} from './components/videos/VideoPage'
 import {ProfileHeader} from './ProfileHeader'
 import { PageLink, PageTitle } from '../../components/layout/core'
 
@@ -63,8 +63,8 @@ const ProfilePage = () => (
         path='documents'
         element={
           <>
-            <PageTitle breadcrumbs={profileBreadCrumbs}>Documents</PageTitle>
-            <Documents />
+            <PageTitle breadcrumbs={profileBreadCrumbs}>Fotos</PageTitle>
+            <PhotoPage />
           </>
         }
       />
@@ -72,8 +72,8 @@ const ProfilePage = () => (
         path='connections'
         element={
           <>
-            <PageTitle breadcrumbs={profileBreadCrumbs}>Connections</PageTitle>
-            <Connections />
+            <PageTitle breadcrumbs={profileBreadCrumbs}>Videos</PageTitle>
+            <VideoPage />
           </>
         }
       />
