@@ -1,11 +1,11 @@
 
 import {FC, useEffect} from 'react'
 import {useMutation, useQueryClient} from 'react-query'
-import {MenuComponent} from '../../../../../../../components/assets/ts/components'
 import {ID, KTIcon, QUERIES} from '../../../../../../components/helpers'
 import {useListView} from '../../core/ListViewProvider'
 import {useQueryResponse} from '../../core/QueryResponseProvider'
 import {deleteUser} from '../../core/_requests'
+import { MenuComponent } from '../../../../../../components/assets/ts/components'
 
 type Props = {
   id: ID

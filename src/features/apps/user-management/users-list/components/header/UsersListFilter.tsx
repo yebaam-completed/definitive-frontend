@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react'
-import {MenuComponent} from '../../../../../../../components/assets/ts/components'
 import {initialQueryState, KTIcon} from '../../../../../../components/helpers'
 import {useQueryRequest} from '../../core/QueryRequestProvider'
 import {useQueryResponse} from '../../core/QueryResponseProvider'
+import { MenuComponent } from '../../../../../../components/assets/ts/components'
 
 const UsersListFilter = () => {
   const {updateState} = useQueryRequest()

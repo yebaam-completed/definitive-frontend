@@ -3,13 +3,11 @@ import { io, Socket } from 'socket.io-client';
 export class SocketService {
   public socket: Socket | null = null;
 
-  setupSocketConnection(token: string) {
+  setupSocketConnection() {
     this.socket = io('http://localhost:5000', {
       transports: ['websocket'],
       secure: true,
-      extraHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
+    
     });
     this.socketConnectionEvents();
   }

@@ -1,7 +1,6 @@
 
 
 import React from 'react'
-import {Questions} from './partials/Questions'
 import { Toolbar } from '../../../../components/layout/components/toolbar/Toolbar'
 import { Content } from '../../../../components/layout/components/Content'
 import { EnableSidebar } from '../../../../components/layout/core'
@@ -31,7 +30,7 @@ const Search: React.FC = () => {
 
           <div className='separator separator-dashed border-gray-300 my-6'></div>
 
-          <Questions />
+          {/* <Questions /> */}
         </EnableSidebar>
       </Content>
     </>

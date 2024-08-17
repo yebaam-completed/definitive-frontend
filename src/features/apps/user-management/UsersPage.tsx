@@ -1,6 +1,6 @@
 import {Route, Routes, Outlet, Navigate} from 'react-router-dom'
-import {PageLink, PageTitle} from '../../../../components/layout/core'
 import {UsersListWrapper} from './users-list/UsersList'
+import { PageLink, PageTitle } from '../../../components/layout/core'
 
 const usersBreadcrumbs: Array<PageLink> = [
   {
