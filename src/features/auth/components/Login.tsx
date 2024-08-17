@@ -1,35 +1,17 @@
 
 import {useState} from 'react'
-import * as Yup from 'yup'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import {getUserByToken, login} from '../core/_requests'
 import {useAuth} from '../core/Auth'
 import { toAbsoluteUrl } from '../../../components/helpers'
-
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
-})
+import { loginSchema } from '../schemes/login.schema'
 
 const initialValues = {
   email: 'admin@demo.com',
   password: 'demo',
 }
-
-/*
-  Formik+YUP+Typescript:
-  https://jaredpalmer.com/formik/docs/tutorial#getfieldprops
-  https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
-*/
 
 export function Login() {
   const [loading, setLoading] = useState(false)
@@ -64,8 +46,7 @@ export function Login() {
     >
       {/* begin::Heading */}
       <div className='text-center mb-11'>
-        <h1 className='text-gray-900 fw-bolder mb-3'>Sign In</h1>
-        <div className='text-gray-500 fw-semibold fs-6'>Your Social Campaigns</div>
+        <h1 className='text-gray-900 fw-bolder mb-3'>Ingresar</h1>
       </div>
       {/* begin::Heading */}
 
@@ -75,7 +56,7 @@ export function Login() {
         <div className='col-md-6'>
           {/* begin::Google link */}
           <a
-            href='#'
+           
             className='btn btn-flex btn-outline btn-text-gray-700 btn-active-color-primary bg-state-light flex-center text-nowrap w-100'
           >
             <img
@@ -83,7 +64,7 @@ export function Login() {
               src={toAbsoluteUrl('media/svg/brand-logos/google-icon.svg')}
               className='h-15px me-3'
             />
-            Sign in with Google
+             Google
           </a>
           {/* end::Google link */}
         </div>
@@ -106,7 +87,7 @@ export function Login() {
               src={toAbsoluteUrl('media/svg/brand-logos/apple-black-dark.svg')}
               className='theme-dark-show h-15px me-3'
             />
-            Sign in with Apple
+            Apple
           </a>
           {/* end::Google link */}
         </div>
@@ -116,7 +97,7 @@ export function Login() {
 
       {/* begin::Separator */}
       <div className='separator separator-content my-14'>
-        <span className='w-125px text-gray-500 fw-semibold fs-7'>Or with email</span>
+        <span className='w-125px text-gray-500 fw-semibold fs-7'>O email</span>
       </div>
       {/* end::Separator */}
 
@@ -127,8 +108,8 @@ export function Login() {
       ) : (
         <div className='mb-10 bg-light-info p-8 rounded'>
           <div className='text-info'>
-            Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
-            continue.
+            ingrese con el demo <strong>admin@demo.com</strong> and password <strong>demo</strong> to
+            
           </div>
         </div>
       )}
@@ -219,7 +200,7 @@ export function Login() {
       <div className='text-gray-500 text-center fw-semibold fs-6'>
         Not a Member yet?{' '}
         <Link to='/auth/registration' className='link-primary'>
-          Sign up
+          Registrarse
         </Link>
       </div>
     </form>

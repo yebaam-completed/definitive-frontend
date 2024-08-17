@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../core/Auth';
 import { PasswordMeterComponent } from '../../../components/assets/ts/components';
 import { toAbsoluteUrl } from '../../../components/helpers';
-import { registrationSchema } from '../schemes/regisyer.schema';
+import { registrationSchema } from '../schemes/register.schema';
 
 const initialValues = {
   username: '',
