@@ -18,7 +18,7 @@ export const SidebarComponent: React.FC = () => {
         <NavItemComponent title="Feeds" icon="bi-rss" route="/feeds" />
         <SeeMoreButtonComponent />
       </NavListComponent>
-        aqui otro seccion
+        {/* aqui otro seccion */}
     </div>
   );
 };
