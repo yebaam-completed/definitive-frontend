@@ -1,7 +1,7 @@
 import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
 import {PostUser} from './components/postUser/PostUser'
 import {InfoProfileUser} from './components/info/InfoProfileUser'
-import {Campaigns} from './components/Campaigns'
+import {FriendPage} from './components/friend/FriendPage'
 import {Documents} from './components/Documents'
 import {Connections} from './components/Connections'
 import {ProfileHeader} from './ProfileHeader'
@@ -54,8 +54,8 @@ const ProfilePage = () => (
         path='campaigns'
         element={
           <>
-            <PageTitle breadcrumbs={profileBreadCrumbs}>Campaigns</PageTitle>
-            <Campaigns />
+            <PageTitle breadcrumbs={profileBreadCrumbs}>Friend</PageTitle>
+            <FriendPage />
           </>
         }
       />
