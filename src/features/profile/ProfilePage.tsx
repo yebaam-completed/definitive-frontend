@@ -1,5 +1,5 @@
 import {Navigate, Outlet, Route, Routes} from 'react-router-dom'
-import {Overview} from './components/Overview'
+import {PostUser} from './components/postUser/PostUser'
 import {Projects} from './components/Projects'
 import {Campaigns} from './components/Campaigns'
 import {Documents} from './components/Documents'
@@ -37,7 +37,7 @@ const ProfilePage = () => (
         element={
           <>
             <PageTitle breadcrumbs={profileBreadCrumbs}>Overviewdddd</PageTitle>
-            <Overview />
+            <PostUser />
           </>
         }
       />
