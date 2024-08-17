@@ -27,7 +27,6 @@ const ChatPage = () => {
           path='private-chat'
           element={
             <>
-              <PageTitle breadcrumbs={chatBreadCrumbs}>Private chat</PageTitle>
               <Private />
             </>
           }
