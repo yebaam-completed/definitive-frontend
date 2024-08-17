@@ -10,8 +10,7 @@ import { loginSchema } from '../schemes/login.schema'
 
 const initialValues = {
   email: 'admin@demo.com',
-  password: 'dym123',
-  username:'user1'
+  password: 'demo',
 }
 
 export function Login() {
