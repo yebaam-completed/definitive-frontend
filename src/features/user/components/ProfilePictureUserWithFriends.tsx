@@ -28,7 +28,7 @@ const ProfilePictureUserWithFriends: React.FC = () => {
               src={`https://plus.unsplash.com/premium_photo-1723791732457-788311c5da12?q=80&w=1766&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D-${index}.jpg`}  
               alt={`Friend ${index}`}
               className="rounded-circle border border-2 border-white"
-              style={{ width: '40px', height: '40px', objectFit: 'cover', marginLeft: '-10px' }}
+              style={{  cursor: 'pointer',width: '40px', height: '40px', objectFit: 'cover', marginLeft: '-10px' }}
             />
           ))}
         </div>
