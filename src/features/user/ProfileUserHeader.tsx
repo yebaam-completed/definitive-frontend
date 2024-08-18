@@ -5,7 +5,11 @@ import { ProfileHeaderUserWithCover } from "./components/ProfileHeaderWithCover"
 import { ProfileUserStats } from "./components/ProfileUserStats";
 import { ProfileUserTabs } from "./components/ProfileUserTabs";
 
-const ProfileUserHeader: React.FC = () => (
+interface ProfileUserHeaderProps {
+  userId: string;
+}
+
+const ProfileUserHeader: React.FC <ProfileUserHeaderProps> = () => (
   <Content>
     <ProfileHeaderUserWithCover />
     <div className="card mb-5 mb-xl-10">

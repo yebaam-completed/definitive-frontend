@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 const ProfileUserTabs: React.FC = () => {
   const location = useLocation();
+  const { id } = useParams<{ id: string }>(); // Obtener el ID del usuario de la URL
 
   return (
     <div className='d-flex overflow-auto h-55px'>
@@ -11,9 +12,9 @@ const ProfileUserTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/overview' && 'active')
+              (location.pathname === `/profile/${id}/overview` && 'active')
             }
-            to='/crafted/pages/profile/overview'
+            to={`/profile/${id}/overview`}
           >
             Publicaciones
           </Link>
@@ -22,9 +23,9 @@ const ProfileUserTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/projects' && 'active')
+              (location.pathname === `/profile/${id}/info` && 'active')
             }
-            to='/crafted/pages/profile/projects'
+            to={`/profile/${id}/info`}
           >
             Información
           </Link>
@@ -33,9 +34,9 @@ const ProfileUserTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/campaigns' && 'active')
+              (location.pathname === `/profile/${id}/friends` && 'active')
             }
-            to='/crafted/pages/profile/campaigns'
+            to={`/profile/${id}/friends`}
           >
             Amigos
           </Link>
@@ -44,9 +45,9 @@ const ProfileUserTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/documents' && 'active')
+              (location.pathname === `/profile/${id}/photos` && 'active')
             }
-            to='/crafted/pages/profile/documents'
+            to={`/profile/${id}/photos`}
           >
             Fotos
           </Link>
@@ -55,9 +56,9 @@ const ProfileUserTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/connections' && 'active')
+              (location.pathname === `/profile/${id}/videos` && 'active')
             }
-            to='/crafted/pages/profile/connections'
+            to={`/profile/${id}/videos`}
           >
             Videos
           </Link>

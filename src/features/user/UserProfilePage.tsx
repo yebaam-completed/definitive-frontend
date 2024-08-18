@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Navigate, Outlet, Route, Routes, useParams } from 'react-router-dom';
-// import { PostUser } from './components/postUser/PostUser';
-// import { InfoProfileUser } from './components/info/InfoProfileUser';
-// import { FriendPage } from './components/friend/FriendPage';
-// import { PhotoPage } from './components/photos/PhotoPage';
-// import { VideoPage } from './components/videos/VideoPage';
-// import { ProfileUserHeader } from './ProfileUserHeader';
 import { PageLink, PageTitle } from '../../components/layout/core';
-import Friend from '../contact/Friend';
 import { ProfileUserHeader } from './ProfileUserHeader';
+import { PostUser } from './pages/PostUser';
+import { InfoProfileUser } from './pages/InfoProfileUser';
+import { FriendPage } from './pages/FriendPage';
+import { PhotoPage } from './pages/PhotoPage';
+import { VideoPage } from './pages/VideoPage';
 
 const profileBreadCrumbs: Array<PageLink> = [
   {
@@ -26,17 +24,17 @@ const profileBreadCrumbs: Array<PageLink> = [
   },
 ];
 
+
+
 const UserProfilePage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Obtener el ID del usuario de la URL
-
+  const userId = id ?? ''; // Proporcionar un valor por defecto
   return (
     <Routes>
       <Route
         element={
           <>
-            <ProfileUserHeader  /> 
-            {/* <ProfileUserHeader userId={id} />  */}
-            {/* Pasar el ID al Header para cargar la info del usuario */}
+            <ProfileUserHeader userId={userId} /> 
             <Outlet />
           </>
         }
@@ -46,8 +44,7 @@ const UserProfilePage: React.FC = () => {
           element={
             <>
               <PageTitle breadcrumbs={profileBreadCrumbs}>Overview</PageTitle>
-              {/* <Friend /> */}
-               {/* Pasar el ID al componente PostUser */}
+              <PostUser userId={userId} /> 
             </>
           }
         />
@@ -56,8 +53,7 @@ const UserProfilePage: React.FC = () => {
           element={
             <>
               <PageTitle breadcrumbs={profileBreadCrumbs}>Info</PageTitle>
-              {/* <InfoProfileUser userId={id} /> */}
-               {/* Pasar el ID al componente InfoProfileUser */}
+              <InfoProfileUser userId={userId} /> 
             </>
           }
         />
@@ -66,8 +62,7 @@ const UserProfilePage: React.FC = () => {
           element={
             <>
               <PageTitle breadcrumbs={profileBreadCrumbs}>Friends</PageTitle>
-              {/* <FriendPage userId={id} />  */}
-              {/* Pasar el ID al componente FriendPage */}
+              <FriendPage userId={userId} /> 
             </>
           }
         />
@@ -76,8 +71,7 @@ const UserProfilePage: React.FC = () => {
           element={
             <>
               <PageTitle breadcrumbs={profileBreadCrumbs}>Photos</PageTitle>
-              {/* <PhotoPage userId={id} /> */}
-               {/* Pasar el ID al componente PhotoPage */}
+              <PhotoPage userId={userId} /> 
             </>
           }
         />
@@ -86,8 +80,7 @@ const UserProfilePage: React.FC = () => {
           element={
             <>
               <PageTitle breadcrumbs={profileBreadCrumbs}>Videos</PageTitle>
-              {/* <VideoPage userId={id} />  */}
-              {/* Pasar el ID al componente VideoPage */}
+              <VideoPage userId={userId} /> 
             </>
           }
         />
