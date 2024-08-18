@@ -6,6 +6,7 @@ import {PhotoPage} from './components/photos/PhotoPage'
 import {VideoPage} from './components/videos/VideoPage'
 import {ProfileHeader} from './ProfileHeader'
 import { PageLink, PageTitle } from '../../components/layout/core'
+import React from 'react'
 
 const profileBreadCrumbs: Array<PageLink> = [
   {

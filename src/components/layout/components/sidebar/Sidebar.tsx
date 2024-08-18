@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import {useLayout} from '../../core'
 import Advertising from '../../../../features/advertising/Advertising'
 import YourPages from '../../../../features/pages/yourPages/YourPages'
-import Friend from '../../../../features/friend/Friend'
+import Friend from '../../../../features/contact/Friend'
 
 export function Sidebar() {
   const {classes} = useLayout()
