@@ -1,40 +1,74 @@
-import { FC, lazy, Suspense } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { getCSSVariableValue } from '../components/assets/ts/_utils';
-import { WithChildren } from '../components/helpers';
-import { DisableSidebar } from '../components/layout/core';
-import { MasterLayout } from '../components/layout/MasterLayout';
-import { DashboardWrapper } from './pages/dashboard/DashboardWrapper';
-import TopBarProgress from 'react-topbar-progress-indicator';
-import UserProfilePage from './user/UserProfilePage';
+import { FC, lazy, Suspense } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { getCSSVariableValue } from "../components/assets/ts/_utils";
+import { WithChildren } from "../components/helpers";
+import { DisableSidebar } from "../components/layout/core";
+import { MasterLayout } from "../components/layout/MasterLayout";
+import { DashboardWrapper } from "./pages/dashboard/DashboardWrapper";
+import TopBarProgress from "react-topbar-progress-indicator";
+import UserProfilePage from "./user/UserProfilePage";
 
 const PrivateRoutes = () => {
-  const ProfilePage = lazy(() => import('../features/profile/ProfilePage'));
-  const AccountPage = lazy(() => import('../features/accounts/AccountPage'));
-  const ChatPage = lazy(() => import('../features/apps/chat/ChatPage'));
+  const ProfilePage = lazy(() => import("../features/profile/ProfilePage"));
+  const AccountPage = lazy(() => import("../features/accounts/AccountPage"));
+  const ChatPage = lazy(() => import("../features/apps/chat/ChatPage"));
+
+  //
+
+
+  const FeedsPage = lazy(() => import('../features/feed/FeedsPage'));
+  const VideosPage = lazy(() => import('../features/videos/VideosPage'));
+  const GroupsPage = lazy(() => import('../features/grups/GroupsPage'));
+  const FriendsPage = lazy(() => import('../features/user/pages/friend/FriendsPage'));
 
   return (
     <Routes>
       <Route element={<MasterLayout />}>
         {/* Redirect to Dashboard after success login/registartion */}
-        <Route path='auth/*' element={<Navigate to='/home' />} />
+        <Route path="auth/*" element={<Navigate to="/home" />} />
         {/* Pages */}
-        <Route path='home' element={<DashboardWrapper />} />
+        <Route path="home" element={<DashboardWrapper />} />
 
         {/* Lazy Modules */}
         {/* Ruta para el perfil del usuario logueado */}
         <Route
-          path='crafted/pages/profile/*'
+          path="crafted/pages/profile/*"
           element={
             <SuspensedView>
               <ProfilePage />
             </SuspensedView>
           }
         />
+        <Route
+          path="groups"
+          element={
+            <SuspensedView>
+              <GroupsPage />
+            </SuspensedView>
+          }
+        />
+
+        <Route
+          path="videos"
+          element={
+            <SuspensedView>
+              <VideosPage />
+            </SuspensedView>
+          }
+        />
+
+        <Route
+          path="friends"
+          element={
+            <SuspensedView>
+              <FriendsPage />
+            </SuspensedView>
+          }
+        />
 
         {/* Ruta para el perfil de otro usuario, con su ID */}
         <Route
-          path='profile/:id/*'
+          path="profile/:id/*"
           element={
             <SuspensedView>
               <UserProfilePage />
@@ -44,7 +78,7 @@ const PrivateRoutes = () => {
 
         {/* Otras rutas */}
         <Route
-          path='crafted/account/*'
+          path="crafted/account/*"
           element={
             <SuspensedView>
               <AccountPage />
@@ -52,26 +86,34 @@ const PrivateRoutes = () => {
           }
         />
         <Route
-          path='apps/chat/*'
+          path="apps/chat/*"
           element={
             <SuspensedView>
               <ChatPage />
             </SuspensedView>
           }
         />
+          <Route
+          path='feeds'
+          element={
+            <SuspensedView>
+              <FeedsPage />
+            </SuspensedView>
+          }
+        />
 
         {/* Page Not Found */}
-        <Route path='*' element={<Navigate to='/error/404' />} />
+        <Route path="*" element={<Navigate to="/error/404" />} />
       </Route>
     </Routes>
   );
 };
 
 const SuspensedView: FC<WithChildren> = ({ children }) => {
-  const baseColor = getCSSVariableValue('--bs-primary');
+  const baseColor = getCSSVariableValue("--bs-primary");
   TopBarProgress.config({
     barColors: {
-      '0': baseColor,
+      "0": baseColor,
     },
     barThickness: 1,
     shadowBlur: 5,
