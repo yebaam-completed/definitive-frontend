@@ -9,8 +9,8 @@ import { toAbsoluteUrl } from '../../../components/helpers'
 import { loginSchema } from '../schemes/login.schema'
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  username: 'user2',
+  password: 'dym123',
 }
 
 export function Login() {
@@ -23,7 +23,7 @@ export function Login() {
     onSubmit: async (values, {setStatus, setSubmitting}) => {
       setLoading(true)
       try {
-        const {data: auth} = await login(values.email, values.password)
+        const {data: auth} = await login(values.username, values.password)
         saveAuth(auth)
         const {data: user} = await getUserByToken(auth.api_token)
         setCurrentUser(user)
@@ -97,7 +97,7 @@ export function Login() {
 
       {/* begin::Separator */}
       <div className='separator separator-content my-14'>
-        <span className='w-125px text-gray-500 fw-semibold fs-7'>O email</span>
+        <span className='w-125px text-gray-500 fw-semibold fs-7'>O Username</span>
       </div>
       {/* end::Separator */}
 
@@ -118,22 +118,22 @@ export function Login() {
       <div className='fv-row mb-8'>
         <label className='form-label fs-6 fw-bolder text-gray-900'>Email</label>
         <input
-          placeholder='Email'
-          {...formik.getFieldProps('email')}
+          placeholder='username'
+          {...formik.getFieldProps('username')}
           className={clsx(
             'form-control bg-transparent',
-            {'is-invalid': formik.touched.email && formik.errors.email},
+            {'is-invalid': formik.touched.username && formik.errors.username},
             {
-              'is-valid': formik.touched.email && !formik.errors.email,
+              'is-valid': formik.touched.username && !formik.errors.username,
             }
           )}
-          type='email'
-          name='email'
+          type='text'
+          name='username'
           autoComplete='off'
         />
-        {formik.touched.email && formik.errors.email && (
+        {formik.touched.username && formik.errors.username && (
           <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
+            <span role='alert'>{formik.errors.username}</span>
           </div>
         )}
       </div>
