@@ -7,6 +7,7 @@ import {getUserByToken, login} from '../core/_requests'
 import {useAuth} from '../core/Auth'
 import { toAbsoluteUrl } from '../../../components/helpers'
 import { loginSchema } from '../schemes/login.schema'
+import TestCors from '../../TestCors'
 
 const initialValues = {
   email: 'admin@demo.com',
@@ -202,7 +203,10 @@ export function Login() {
         <Link to='/auth/registration' className='link-primary'>
           Registrarse
         </Link>
+        
       </div>
+
+      <TestCors />
     </form>
   )
 }

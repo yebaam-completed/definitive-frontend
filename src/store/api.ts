@@ -5,10 +5,8 @@ export const getDataFromSessionStorage = (key: string) => {
   const data = window.sessionStorage.getItem(key) as string;
   return JSON.parse(data);
 };
-
-
-const BASE_ENDPOINT = import.meta.env.VITE_BASE_ENDPOINT || 'http://localhost:5000';
-
+const BASE_ENDPOINT  =`https://api.serversocial.xyz/api/v1`
+// const BASE_ENDPOINT = import.meta.env.VITE_BASE_ENDPOINT || 'http://localhost:5000';
 const baseQuery = fetchBaseQuery({
   baseUrl: `${BASE_ENDPOINT}/api/v1`,
   prepareHeaders: (headers) => {
