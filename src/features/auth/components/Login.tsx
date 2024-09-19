@@ -1,39 +1,57 @@
-
-import {useState} from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React from 'react';
+import { useState} from 'react'
 import clsx from 'clsx'
 import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
-import {getUserByToken, login} from '../core/_requests'
-import {useAuth} from '../core/Auth'
 import { toAbsoluteUrl } from '../../../components/helpers'
 import { loginSchema } from '../schemes/login.schema'
-import TestCors from '../../TestCors'
-
-const initialValues = {
-  username: 'user2',
-  password: 'dym123',
-}
+import { useSignInMutation } from '../services/auth.service';
+import { useAppDispatch } from "../../../store/store";
+import { addAuthUser } from '../reducers/auth.reducer';
+import { saveToSessionStorage } from '../../../shared/utils/utils.service'
+import { useNavigate } from 'react-router-dom';
 
 export function Login() {
+  const dispatch = useAppDispatch();
+  const [username, setUsername] = useState('cami1');
+  const [password, setPassword] = useState('dym123');
+
+  const initialValues = {
+    username,
+    password,
+  }
+
+  const navigate = useNavigate();
+  const [signIn] = useSignInMutation();
+
   const [loading, setLoading] = useState(false)
-  const {saveAuth, setCurrentUser} = useAuth()
 
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values, {setStatus, setSubmitting}) => {
-      setLoading(true)
+      setLoading(true);
       try {
-        const {data: auth} = await login(values.username, values.password)
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
-      } catch (error) {
-        console.error(error)
-        saveAuth(undefined)
-        setStatus('The login details are incorrect')
-        setSubmitting(false)
-        setLoading(false)
+        const response = await signIn({
+          username,
+          password,
+        }).unwrap();
+  
+        if (response.token && response.user) {
+          const { user , token} = response;
+          console.log({token, from: 'login'})
+          const userWithToken: any = {
+            ...user,
+            token,
+          };
+          saveToSessionStorage(userWithToken); 
+          dispatch(addAuthUser({ authInfo: userWithToken }));
+          navigate('/'); 
+        }
+      } catch (err) {
+        console.error('Login failed:', err);
       }
     },
   })
@@ -203,10 +221,7 @@ export function Login() {
         <Link to='/auth/registration' className='link-primary'>
           Registrarse
         </Link>
-        
       </div>
-
-      <TestCors />
     </form>
   )
 }

@@ -1,6 +1,7 @@
 import { useLayout } from "../layout/core";
 import { ThemeModeComponent } from "../assets/ts/layout";
 
+// internal path url
 export const toAbsoluteUrl = (pathname: string) =>
   import.meta.env.BASE_URL + pathname;
 

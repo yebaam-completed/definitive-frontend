@@ -2,14 +2,19 @@ import React from 'react';
 import { FriendTabs } from './FriendTabs';
 import { FriendList } from './FriendList';
 import { Content } from '../../../../components/layout/components/Content';
+import { friendModel } from '../../../../shared/interfaces/shared.interface';
 
-export const FriendPage: React.FC = () => {
+type IFriendPage = {
+  friends: friendModel[];
+};
+
+export const FriendPage: React.FC<IFriendPage> = ({friends}) => {
   return (
     <Content>
       <div className="d-flex flex-wrap flex-stack mb-6">
         <h3 className="fw-bolder my-2">
           Lista de amigos
-          <span className="fs-6 text-gray-500 fw-bold ms-1">30</span>
+          <span className="fs-6 text-gray-500 fw-bold ms-1">{friends.length}</span>
         </h3>
 
         <div className="d-flex align-items-center my-2">
@@ -22,8 +27,8 @@ export const FriendPage: React.FC = () => {
         </div>
       </div>
 
-      <FriendTabs />
-      <FriendList />
+      <FriendTabs /> {/* añadir filtros de listado de amigos */}
+      <FriendList friends={friends} />
     </Content>
   );
 };

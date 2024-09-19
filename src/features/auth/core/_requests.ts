@@ -1,32 +1,11 @@
 import axios from "axios";
-import { AuthModel, UserModel } from "./_models";
+const API_URL = 'http://localhost:5000';
+// import.meta.env.VITE_APP_API_URL;
+// https://api.serversocial.xyz/api/v1
 
-const API_URL = 'http://localhost:5000/api/v1';
-// const API_URL = import.meta.env.VITE_APP_API_URL;
-// http://localhost:5000/api/v1
-export const GET_USER_BY_ACCESSTOKEN_URL = `http://localhost:5000/api/v1/currentuser`;
-export const LOGIN_URL = `${API_URL}/signin`;
 export const REGISTER_URL = `${API_URL}/register`;
 export const REQUEST_PASSWORD_URL = `${API_URL}/forgot_password`;
 
-// Server should return AuthModel
-export function login(username: string, password: string) {
-  return axios.post<AuthModel>(
-    LOGIN_URL,
-    {
-      username,
-      password,
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      withCredentials: true,  // Para enviar cookies de sesión al backend
-    }
-  );
-}
-
-// Server should return AuthModel
 export function register(
   email: string,
   firstname: string,
@@ -62,35 +41,6 @@ export function requestPassword(email: string) {
     {
       headers: {
         'Content-Type': 'application/json',
-      },
-      withCredentials: true,  // Para enviar cookies de sesión al backend
-    }
-  );
-}
-
-// export function getUserByToken(token: string) {
-//   return axios.post<UserModel>(
-//     GET_USER_BY_ACCESSTOKEN_URL,
-//     {
-//       api_token: token,
-//     },
-//     {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       withCredentials: true,  // Para enviar cookies de sesión al backend
-//     }
-//   );
-// }
-
-
-export function getUserByToken(token: string) {
-  return axios.get<UserModel>(
-    GET_USER_BY_ACCESSTOKEN_URL,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
       },
       withCredentials: true,  // Para enviar cookies de sesión al backend
     }

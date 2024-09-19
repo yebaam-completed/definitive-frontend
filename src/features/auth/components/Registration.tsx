@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useFormik } from 'formik';
 import clsx from 'clsx';
-import { getUserByToken, register } from '../core/_requests';
+import { register } from '../core/_requests';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../core/Auth';
 import { PasswordMeterComponent } from '../../../components/assets/ts/components';

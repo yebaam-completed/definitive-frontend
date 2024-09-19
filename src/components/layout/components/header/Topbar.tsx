@@ -1,18 +1,25 @@
 import clsx from 'clsx'
 import React, {FC} from 'react'
-import {KTIcon, toAbsoluteUrl} from '../../../helpers'
+import {KTIcon} from '../../../helpers'
 import {
   HeaderNotificationsMenu,
   HeaderUserMenu,
   Search,
   ThemeModeSwitcher,
 } from '../../../partials'
+import { UserModel } from '../../../../features/auth'
 
 const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
   toolbarButtonHeightClass = 'w-30px h-30px w-md-40px h-md-40px',
   toolbarButtonIconSizeClass = 'fs-1'
+  
+interface TopbarProps {
+  currentUser: UserModel; 
+  logout: () => void;
+}
 
-const Topbar: FC = () => {
+const Topbar: FC<TopbarProps> = ({currentUser, logout}) => {
+
   return (
     <div className='d-flex align-items-stretch flex-shrink-0'>
       <div className='topbar d-flex align-items-stretch flex-shrink-0'>
@@ -74,14 +81,15 @@ const Topbar: FC = () => {
           >
             <div className='d-none d-md-flex flex-column align-items-end justify-content-center me-2'>
               <span className='text-muted fs-7 fw-bold lh-1 mb-2'>Hello</span>
-              <span className='text-gray-900 fs-base fw-bolder lh-1'>Richard</span>
+              <span className='text-gray-900 fs-base fw-bolder lh-1'>{currentUser?.first_name}</span>
+              <span className='text-gray-900 fs-base fw-bolder lh-1'>{currentUser?.last_name}</span>
             </div>
 
             <div className='symbol symbol-30px symbol-md-40px'>
-              <img src={toAbsoluteUrl('media/avatars/300-1.jpg')} alt='avatar' />
+              <img src={currentUser?.pic} alt='avatar' />
             </div>
           </div>
-          <HeaderUserMenu />
+          <HeaderUserMenu currentUser={currentUser}  logout={logout}/>
         </div>
         {/* end::User */}
 

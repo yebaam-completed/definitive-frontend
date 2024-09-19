@@ -13,7 +13,7 @@ const ProfileTabs: React.FC = () => {
               `nav-link text-active-primary me-6 ` +
               (location.pathname === '/crafted/pages/profile/overview' && 'active')
             }
-            to='/crafted/pages/profile/overview'
+            to='/crafted/pages/profile/posts'
           >
             Publicaciones
           </Link>
@@ -22,9 +22,9 @@ const ProfileTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/projects' && 'active')
+              (location.pathname === '/crafted/pages/profile/info-profile' && 'active')
             }
-            to='/crafted/pages/profile/projects'
+            to='/crafted/pages/profile/info-profile'
           >
             Información
           </Link>
@@ -33,9 +33,9 @@ const ProfileTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/campaigns' && 'active')
+              (location.pathname === '/crafted/pages/profile/friends' && 'active')
             }
-            to='/crafted/pages/profile/campaigns'
+            to='/crafted/pages/profile/friends'
           >
             Amigos
           </Link>
@@ -44,9 +44,9 @@ const ProfileTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/documents' && 'active')
+              (location.pathname === '/crafted/pages/profile/photos' && 'active')
             }
-            to='/crafted/pages/profile/documents'
+            to='/crafted/pages/profile/photos'
           >
             Fotos
           </Link>
@@ -55,9 +55,9 @@ const ProfileTabs: React.FC = () => {
           <Link
             className={
               `nav-link text-active-primary me-6 ` +
-              (location.pathname === '/crafted/pages/profile/connections' && 'active')
+              (location.pathname === '/crafted/pages/profile/videos' && 'active')
             }
-            to='/crafted/pages/profile/connections'
+            to='/crafted/pages/profile/videos'
           >
             Videos
           </Link>

@@ -1,14 +1,20 @@
 
 import clsx from 'clsx'
-import React from 'react'
+import React, { FC } from 'react'
 import {Link} from 'react-router-dom'
 import {KTIcon} from '../../../helpers'
 import {useThemeMode} from '../../../partials'
 import {useLayout} from '../../core'
 import {Header} from './Header'
 import {Topbar} from './Topbar'
+import { UserModel } from '../../../../features/auth'
 
-export function HeaderWrapper() {
+interface HeaderWrapper {
+  currentUser: UserModel; 
+  logout: () => void;
+}
+
+const HeaderWrapper: FC<HeaderWrapper> = ({currentUser, logout}) => {
   const {config, classes, attributes} = useLayout()
   const {header, aside} = config
   const {mode} = useThemeMode()
@@ -76,9 +82,11 @@ export function HeaderWrapper() {
             )}
           </div>
 
-          <Topbar />
+          <Topbar currentUser={currentUser} logout={logout} />
         </div>
       </div>
     </div>
   )
 }
+
+export {HeaderWrapper}

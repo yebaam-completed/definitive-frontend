@@ -1,10 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChangeProfilePictureModal } from './modals/ChangeProfilePictureModal';
+import { UserModel } from '../../auth';
+import { getMainlyFriends } from '../../../services/friends';
+import { friendModel } from '../../../shared/interfaces/shared.interface';
 
-const ProfilePictureWithFriends: React.FC = () => {
+type ProfilePictureWithFriends = {
+  currentUser: UserModel;
+  friends: friendModel[];
+};
+
+const ProfilePictureWithFriends: React.FC<ProfilePictureWithFriends> = ({currentUser, friends}) => {
   const [showProfileModal, setShowProfileModal] = useState(false);
-
   const handleProfileSave = (image: File | null) => {
     // Lógica para guardar la nueva imagen de perfil
     setShowProfileModal(false);
@@ -14,7 +21,7 @@ const ProfilePictureWithFriends: React.FC = () => {
     <div className="d-flex align-items-center position-relative mt-n5">
       <div className="position-relative">
         <img
-          src="https://images.unsplash.com/photo-1719937050445-098888c0625e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  // Aquí debes poner el link a la foto de perfil real.
+          src={currentUser.pic}
           alt="Profile"
           className="rounded-circle border border-3 border-white"
           style={{ width: '150px', height: '150px', objectFit: 'cover' }}
@@ -29,16 +36,16 @@ const ProfilePictureWithFriends: React.FC = () => {
 
       <div className="ms-3">
         <div className="text-center">
-          <h2 className="fw-bold">Flower Moreno</h2>
+          <h2 className="fw-bold">{`${currentUser.first_name} ${currentUser.last_name}`}</h2>
         </div>
 
         <div className="d-flex mt-2">
           {/* Lista de amigos */}
-          {Array.from({ length: 3 }).map((_, index) => (
+          {friends.map((friend) => (
             <img
-              key={index}
-              src={`https://plus.unsplash.com/premium_photo-1723791732457-788311c5da12?q=80&w=1766&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D-${index}.jpg`}  
-              alt={`Friend ${index}`}
+              key={friend.id}
+              src= {friend.imageSrc}
+              alt={friend.name}
               className="rounded-circle border border-2 border-white"
               style={{ width: '40px', height: '40px', objectFit: 'cover', marginLeft: '-10px' }}
             />

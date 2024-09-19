@@ -7,35 +7,34 @@ import { MasterLayout } from "../components/layout/MasterLayout";
 import { DashboardWrapper } from "./pages/dashboard/DashboardWrapper";
 import TopBarProgress from "react-topbar-progress-indicator";
 import UserProfilePage from "./user/UserProfilePage";
+import { UserModel } from "./auth";
 
-const PrivateRoutes = () => {
+type PrivateRoutesProps = {
+  currentUser: UserModel; 
+  logout: () => void;
+};
+
+const PrivateRoutes: FC<PrivateRoutesProps> = ({currentUser, logout}) => {
+
   const ProfilePage = lazy(() => import("../features/profile/ProfilePage"));
   const AccountPage = lazy(() => import("../features/accounts/AccountPage"));
   const ChatPage = lazy(() => import("../features/apps/chat/ChatPage"));
-
-  //
-
-
   const FeedsPage = lazy(() => import('../features/feed/FeedsPage'));
   const VideosPage = lazy(() => import('../features/videos/VideosPage'));
   const GroupsPage = lazy(() => import('../features/grups/GroupsPage'));
   const FriendsPage = lazy(() => import('../features/user/pages/friend/FriendsPage'));
 
+
   return (
     <Routes>
-      <Route element={<MasterLayout />}>
-        {/* Redirect to Dashboard after success login/registartion */}
+      <Route element={<MasterLayout currentUser={currentUser} logout={logout} />}>
         <Route path="auth/*" element={<Navigate to="/home" />} />
-        {/* Pages */}
         <Route path="home" element={<DashboardWrapper />} />
-
-        {/* Lazy Modules */}
-        {/* Ruta para el perfil del usuario logueado */}
         <Route
           path="crafted/pages/profile/*"
           element={
             <SuspensedView>
-              <ProfilePage />
+              <ProfilePage  currentUser={currentUser}/>
             </SuspensedView>
           }
         />
@@ -66,7 +65,6 @@ const PrivateRoutes = () => {
           }
         />
 
-        {/* Ruta para el perfil de otro usuario, con su ID */}
         <Route
           path="profile/:id/*"
           element={
@@ -76,7 +74,6 @@ const PrivateRoutes = () => {
           }
         />
 
-        {/* Otras rutas */}
         <Route
           path="crafted/account/*"
           element={
@@ -102,7 +99,6 @@ const PrivateRoutes = () => {
           }
         />
 
-        {/* Page Not Found */}
         <Route path="*" element={<Navigate to="/error/404" />} />
       </Route>
     </Routes>

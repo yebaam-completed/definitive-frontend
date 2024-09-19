@@ -80,9 +80,6 @@ export const authApi = api.injectEndpoints({
     checkCurrentUser: build.query<IResponse, void>({
       query: () => '/currentuser',
     }),
-
- 
-
   })
 });
 

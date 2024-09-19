@@ -5,18 +5,23 @@ import { ProfileDetails } from './components/ProfileDetails';
 import { ProfileStats } from './components/ProfileStats';
 import { ProfileTabs } from './components/ProfileTabs';
 import { ProfileHeaderWithCover } from './components/ProfileHeaderWithCover';
+import { UserModel } from '../auth';
+import { friendModel } from '../../shared/interfaces/shared.interface';
 
-const ProfileHeader: React.FC = () => (
+type ProfileHeader = {
+  currentUser: UserModel;
+  friends: friendModel[];
+};
+const ProfileHeader: React.FC<ProfileHeader> = ({currentUser, friends}) => (
   <Content>
-    <ProfileHeaderWithCover />
+    <ProfileHeaderWithCover currentUser={currentUser} friends={friends} />
     <div className='card mb-5 mb-xl-10'>
       <div className='card-body pt-9 pb-0'>
         <div className='d-flex flex-wrap flex-sm-nowrap mb-3'>
-          {/* <ProfilePicture /> */}
           <div className='flex-grow-1'>
-            <ProfileDetails />
+            <ProfileDetails currentUser={currentUser}  friends={friends}  />
             <div className='d-flex flex-wrap flex-stack'>
-              <ProfileStats />
+              <ProfileStats /> {/* insignias */}
             </div>
           </div>
         </div>

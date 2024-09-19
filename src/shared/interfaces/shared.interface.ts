@@ -189,3 +189,24 @@ export interface IRatingCategories {
   two: IRatingCategoryItem;
   one: IRatingCategoryItem;
 }
+
+export interface postModel
+{
+  id: number,
+  bgColor: string,
+  post: string,
+  gifUrl: string,
+  imgId: string,
+  imgVersion: string,
+  image: string,
+  privacy: string,
+  profilePicture: string,
+  feelings: string
+}
+export interface friendModel
+{
+  id: number,
+  name: string,
+  imageSrc: string,
+  mutualFriends: number
+}

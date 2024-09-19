@@ -35,10 +35,11 @@ export const replaceAmpersandAndDashWithSpace = (title: string): string => {
 };
 
 
-export const saveToSessionStorage = (data: string, username: string): void => {
-  window.sessionStorage.setItem('isLoggedIn', data);
-  window.sessionStorage.setItem('loggedInuser', username);
+export const saveToSessionStorage = (data: { isLoggedIn: boolean, username: string }) => {
+  window.sessionStorage.setItem('isLoggedIn', JSON.stringify(data.isLoggedIn));
+  window.sessionStorage.setItem('loggedInUser', data.username);
 };
+
 
 export const getDataFromSessionStorage = (key: string) => {
   const data = window.sessionStorage.getItem(key) as string;

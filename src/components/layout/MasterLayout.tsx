@@ -17,8 +17,14 @@ import {
 } from '../assets/ts/components'
 import clsx from 'clsx'
 import {WithChildren} from '../helpers'
+import { UserModel } from '../../features/auth'
 
-const MasterLayout: FC<WithChildren> = () => {
+interface MasterLayoutProps extends WithChildren {
+  currentUser: UserModel;
+  logout: () => void;
+}
+
+const MasterLayout: FC<MasterLayoutProps> = ({currentUser, logout}) => {
   const {classes} = useLayout()
   const location = useLocation()
 
@@ -36,7 +42,7 @@ const MasterLayout: FC<WithChildren> = () => {
   return (
     <PageDataProvider>
       <div className='page d-flex flex-column flex-column-fluid'>
-        <HeaderWrapper />
+        <HeaderWrapper currentUser={currentUser} logout={logout}/>
 
         <div
           id='kt_content_container'

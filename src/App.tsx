@@ -4,7 +4,6 @@ import { I18nProvider } from './components/i18n/i18nProvider'
 import { LayoutSplashScreen, LayoutProvider } from './components/layout/core'
 import { MasterInit } from './components/layout/MasterInit'
 import { ThemeModeProvider } from './components/partials'
-import { AuthInit } from './features/auth'
 import { socketService } from './socket/socket.service'
 
 const App = () => {
@@ -18,10 +17,8 @@ const App = () => {
       <I18nProvider>
         <LayoutProvider>
           <ThemeModeProvider>
-            <AuthInit>
               <Outlet />
               <MasterInit />
-            </AuthInit>
           </ThemeModeProvider>
         </LayoutProvider>
       </I18nProvider>

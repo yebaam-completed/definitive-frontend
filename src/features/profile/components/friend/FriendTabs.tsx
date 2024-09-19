@@ -3,7 +3,15 @@ import React, { useState } from 'react';
 export const FriendTabs: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Todos los amigos');
 
-  const tabs = ['Todos los amigos', 'Agregados recientemente', 'Cumpleaños', 'Ciudad actual', 'Ciudad de origen', 'Seguidores', 'Seguidos'];
+  const tabs = [
+    'Todos los amigos',
+    'Agregados recientemente',
+    'Cumpleaños',
+    'Ciudad actual',
+    'Ciudad de origen',
+    'Seguidores',
+    'Seguidos'
+  ];
 
   return (
     <div className="mb-4">

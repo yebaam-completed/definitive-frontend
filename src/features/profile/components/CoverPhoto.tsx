@@ -1,8 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { ChangeCoverPhotoModal } from './modals/ChangeCoverPhotoModal';
+import { UserModel } from '../../auth';
 
-const CoverPhoto: React.FC = () => {
+type CoverPhoto = {
+  currentUser: UserModel;
+};
+
+const CoverPhoto: React.FC<CoverPhoto>= ({currentUser}) => {
   const [showCoverModal, setShowCoverModal] = useState(false);
 
   const handleCoverSave = (image: File | null) => {
@@ -17,7 +22,7 @@ const CoverPhoto: React.FC = () => {
   return (
     <div className="position-relative">
       <img
-        src="https://images.unsplash.com/photo-1723647395168-d916159b78c9?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  // Aquí debes poner el link a la foto de portada real.
+        src={currentUser.pic}  // Aquí debes poner el link a la foto de portada real. falta portada
         alt="Cover"
         className="img-fluid w-100"
         style={{ height: '300px', objectFit: 'cover', cursor: 'pointer' }}  // Agrega el cursor pointer
